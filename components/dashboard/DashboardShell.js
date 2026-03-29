@@ -109,6 +109,7 @@ function IconChart() {
 export function DashboardShell({ children }) {
   const pathname = usePathname();
   const [appsOpen, setAppsOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const isActive = (prefix) => pathname === prefix || pathname?.startsWith(`${prefix}/`);
   const appsActive = pathname?.startsWith("/dashboard/apps");
@@ -124,7 +125,11 @@ export function DashboardShell({ children }) {
 
   return (
     <div className="flex min-h-screen bg-[#09090b] text-zinc-100 antialiased">
-      <aside className="flex w-[240px] shrink-0 flex-col border-r border-white/[0.06] bg-[#0c0c0c]">
+      <aside
+        className={`fixed z-50 h-full w-[240px] flex-col border-r border-white/[0.06] bg-[#0c0c0c] transform transition-transform ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } md:translate-x-0 md:static md:flex`}
+      >
         <div className="flex items-center gap-2 border-b border-white/[0.06] px-3 py-3">
           <button
             type="button"
@@ -223,8 +228,24 @@ export function DashboardShell({ children }) {
           <p className="px-2.5 pt-2 text-[10px] leading-relaxed text-zinc-600">© Cal.com clone</p>
         </div>
       </aside>
+        {sidebarOpen && (
+          <div
+            className="fixed inset-0 bg-black/50 z-40 md:hidden"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
 
-      <div className="flex min-h-0 min-w-0 flex-1 flex-col">{children}</div>
+      <div className="flex min-h-0 min-w-0 flex-1 flex-col md:ml-[240px]">
+        <div className="md:hidden p-2">
+          <button
+            onClick={() => setSidebarOpen(true)}
+            className="text-white text-lg"
+          >
+            ☰
+          </button>
+        </div>
+        {children}
+      </div>
     </div>
   );
 }
