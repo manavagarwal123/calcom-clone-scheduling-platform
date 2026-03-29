@@ -13,6 +13,37 @@ https://github.com/manavagarwal123/calcom-clone-scheduling-platform
 
 ---
 
+## 🚀 How to Use the Application
+
+- When you open the website, the application loads directly (no login required).
+
+### 👉 Admin Dashboard
+- To manage events, availability, and bookings:
+  - Click **"Get Started"**
+  - This opens the **Dashboard**
+
+### 👉 Book a Demo
+- To experience the booking flow as a user:
+  - Click **"Book a demo"**
+  - Select a date and time
+  - Enter your name and email
+  - Confirm the booking
+
+---
+
+### 🔁 Simple Flow
+
+- **Get Started → Dashboard (Admin Panel)**
+- **Book a demo → Booking Page (User Side)**
+
+---
+
+### ⚠️ Note
+- No authentication is implemented (as per assignment)
+- A default user is assumed
+
+---
+
 ## 📌 Features
 
 ### 1. Event Types Management
